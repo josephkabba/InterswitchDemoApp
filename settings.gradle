@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Interswitch Demo App"
 include ':app'
+include ':domain'
+include ':presentation'
+include ':local'
+include ':data'
+include ':remote'
