@@ -5,7 +5,9 @@ import androidx.annotation.NonNull
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.local.CommonLocal
+import com.example.local.converters.DataConverters
 import com.example.local.models.FeeLocalModel
 
 @Database(
@@ -13,31 +15,34 @@ import com.example.local.models.FeeLocalModel
     version = CommonLocal.database_version,
     exportSchema = false
 )
-abstract class AppDataBase: RoomDatabase() {
+@TypeConverters(DataConverters::class)
+abstract class AppDataBase : RoomDatabase() {
 
 
     abstract fun feeDao(): FeeDao
 
     companion object {
-        private val LOCK = Any()
         private const val DATABASE_NAME = "cross_db.db"
 
         @Volatile
         private var INSTANCE: AppDataBase? = null
 
         fun getInstance(@NonNull context: Context): AppDataBase {
-            if (INSTANCE == null) {
-                synchronized(LOCK) {
-                    if (INSTANCE == null) {
-                        INSTANCE = Room.databaseBuilder(
-                            context,
-                            AppDataBase::class.java,
-                            DATABASE_NAME,
-                        ).build();
-                    }
+
+            synchronized(this) {
+                var instance = INSTANCE
+
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDataBase::class.java,
+                        DATABASE_NAME,
+                    ).fallbackToDestructiveMigration().build()
+
+                    INSTANCE = instance
                 }
+                return instance
             }
-            return INSTANCE!!
         }
     }
 }

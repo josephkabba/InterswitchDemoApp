@@ -7,25 +7,28 @@ import com.example.data.repository.LocalDataSource
 import com.example.data.repository.RemoteDataSource
 import com.example.domain.models.FeeDomainModel
 import com.example.domain.repository.FeeDataRepository
+import io.reactivex.Completable
+import io.reactivex.Observable
 import javax.inject.Inject
 
 class FeeDataRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
     private val feeDataMapper: FeeDataMapper
-): FeeDataRepository {
-    override suspend fun getFeeData(id: Int): FeeDomainModel {
-        var data = localDataSource.getLocalFeeItem(id)
-
-        if (data.isEmpty()){
-            data = remoteDataSource.getFeeItem(id).toFeeDataModel()
-            localDataSource.insertItemFee(data)
+) : FeeDataRepository {
+    override fun getFeeData(id: Int): Observable<FeeDomainModel> {
+        val dataObservable = localDataSource.getLocalFeeItem(id).map {
+            feeDataMapper.toDomain(it)
         }
 
-        return feeDataMapper.toDomain(data)
+        return remoteDataSource.getFeeItem(id).map {
+            feeDataMapper.toDomain(it.toFeeDataModel())
+        }.onErrorResumeNext(Observable.empty())
+            .concatWith(dataObservable)
+
     }
 
-    override suspend fun deleteCache() {
-        localDataSource.deleteAllFeeData()
+    override fun deleteCache(): Completable {
+        return localDataSource.deleteAllFeeData()
     }
 }

@@ -5,11 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.local.CommonLocal
 
 
-@Entity(tableName = CommonLocal.fee_pay_data)
 data class PayConfigurationLocalModel(
-
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
 
     val bandCode: String,
     val hasExcise: Boolean,

@@ -2,6 +2,7 @@ package com.example.local.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.example.local.CommonLocal
 
 
@@ -13,15 +14,21 @@ data class FeeLocalModel(
 
     val excise: Double,
     val exciseTaxAccount: String,
+
     val feeGroups: List<FeeGroupLocalModel>,
+
     val hasProviderServiceCharge: Boolean,
     val isActive: Boolean,
     val isInclusiveInAmount: Boolean,
     val issueDate: String,
+
     val itemFeeMapSettings: List<Any>,
+
     val name: String,
     val overrideBillerFee: Boolean,
+
     val payConfiguration: List<PayConfigurationLocalModel>,
+
     val providerServiceCharge: Double,
     val providerServiceChargeAccount: String,
     val taxAccount: String,

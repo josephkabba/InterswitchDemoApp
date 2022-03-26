@@ -61,20 +61,34 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
 
     //first party
     implementation "androidx.navigation:navigation-compose:2.4.1"
     implementation "androidx.compose.animation:animation:1.2.0-alpha06"
     implementation "com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha"
 
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
+
+    implementation "com.google.code.gson:gson:2.8.6"
+
     //hilt
     implementation "com.google.dagger:hilt-android:2.39"
     kapt "com.google.dagger:hilt-compiler:2.38.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     
     //room
     implementation "androidx.room:room-runtime:2.4.2"
-    annotationProcessor "androidx.room:room-compiler:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-rxjava2:2.4.2"
 
     //module implementation
     implementation project(":domain")

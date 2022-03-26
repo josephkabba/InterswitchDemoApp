@@ -1,11 +1,13 @@
 package com.example.domain.repository
 
 import com.example.domain.models.FeeDomainModel
+import io.reactivex.Completable
+import io.reactivex.Observable
 
 interface FeeDataRepository {
 
-    suspend fun getFeeData(id: Int): FeeDomainModel
+    fun getFeeData(id: Int): Observable<FeeDomainModel>
 
-    suspend fun deleteCache()
+    fun deleteCache(): Completable
 
 }

@@ -10,4 +10,9 @@ java {
 
 dependencies {
     implementation "javax.inject:javax.inject:1"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
 }

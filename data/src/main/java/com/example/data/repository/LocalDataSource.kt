@@ -1,11 +1,13 @@
 package com.example.data.repository
 
 import com.example.data.models.FeeDataModel
+import io.reactivex.Completable
+import io.reactivex.Observable
 
 interface LocalDataSource {
-    fun insertItemFee(dataItem: FeeDataModel)
+    fun insertItemFee(dataItem: FeeDataModel): Completable
 
-    suspend fun getLocalFeeItem(id: Int): FeeDataModel
+    fun getLocalFeeItem(id: Int): Observable<FeeDataModel>
 
-    suspend fun deleteAllFeeData()
+    fun deleteAllFeeData(): Completable
 }
