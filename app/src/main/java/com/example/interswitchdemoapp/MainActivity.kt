@@ -26,6 +26,7 @@ import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
@@ -48,8 +49,8 @@ class MainActivity : ComponentActivity() {
 
                     Scaffold(bottomBar = {
                         BottomNavigation(
-                            backgroundColor = MaterialTheme.colors.background,
-                            elevation = 0.dp
+                            backgroundColor = MaterialTheme.colors.primary,
+                            elevation = 6.dp
                         ) {
                             val navBackStackEntry by navController.currentBackStackEntryAsState()
                             val currentDestination = navBackStackEntry?.destination
@@ -61,7 +62,7 @@ class MainActivity : ComponentActivity() {
                                             contentDescription = screen.route
                                         )
                                     },
-                                    label = { Text(text = screen.name, color = Color.Black) },
+                                    label = { Text(text = screen.name, color = Color.White) },
                                     selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                                     onClick = {
                                         navController.navigate(screen.route) {

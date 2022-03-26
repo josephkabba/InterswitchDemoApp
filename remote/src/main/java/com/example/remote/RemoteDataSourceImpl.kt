@@ -1,6 +1,6 @@
 package com.example.remote
 
-import com.example.data.RemoteDataSource
+import com.example.data.repository.RemoteDataSource
 import com.example.data.models.GetFeeDataModel
 import com.example.remote.api.RemoteService
 import com.example.remote.mappers.GetFeeRemoteResponseMapper

@@ -1,4 +1,4 @@
-package com.example.data
+package com.example.data.repository
 
 import com.example.data.models.FeeDataModel
 
@@ -7,5 +7,5 @@ interface LocalDataSource {
 
     suspend fun getLocalFeeItem(id: Int): FeeDataModel
 
-    fun deleteAllFeeData()
+    suspend fun deleteAllFeeData()
 }

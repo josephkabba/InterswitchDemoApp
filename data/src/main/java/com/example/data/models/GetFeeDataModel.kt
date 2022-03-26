@@ -5,3 +5,7 @@ data class GetFeeDataModel(
     val responseCode: Int,
     val responseMessage: String
 )
+
+fun GetFeeDataModel.toFeeDataModel(): FeeDataModel {
+    return this.response
+}

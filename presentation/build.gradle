@@ -1,6 +1,8 @@
 plugins {
+    id 'kotlin-kapt'
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -32,6 +34,13 @@ android {
 dependencies {
 
     implementation project(':domain')
+
+    implementation "javax.inject:javax.inject:1"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:2.39"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

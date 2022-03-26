@@ -1,6 +1,6 @@
-package com.example.local.models
+package com.example.domain.models
 
-data class PayConfigurationLocalDataModel(
+data class PayConfigurationDomainModel(
     val bandCode: String,
     val hasExcise: Boolean,
     val hasServiceCharge: Boolean,

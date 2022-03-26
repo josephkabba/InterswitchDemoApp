@@ -1,6 +1,6 @@
-package com.example.local.models
+package com.example.domain.models
 
-data class FeeGroupLocalDataModel(
+data class FeeGroupDomainModel(
     val clientFees: Any,
     val description: String,
     val id: Int,

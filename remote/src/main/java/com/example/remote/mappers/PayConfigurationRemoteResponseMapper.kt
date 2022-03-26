@@ -2,8 +2,9 @@ package com.example.remote.mappers
 
 import com.example.data.models.PayConfigurationDataModel
 import com.example.remote.models.PayConfigurationRemoteModel
+import javax.inject.Inject
 
-class PayConfigurationRemoteResponseMapper :
+class PayConfigurationRemoteResponseMapper @Inject constructor() :
     BaseRemoteMapper<PayConfigurationRemoteModel, PayConfigurationDataModel> {
     override fun toRemote(d: PayConfigurationDataModel): PayConfigurationRemoteModel {
         return PayConfigurationRemoteModel(

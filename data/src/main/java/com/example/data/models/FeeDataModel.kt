@@ -21,3 +21,7 @@ data class FeeDataModel(
     val withholdingTax: Double,
     val withholdingTaxAccount: String
 )
+
+fun FeeDataModel.isEmpty(): Boolean {
+    return this.name == ""
+}

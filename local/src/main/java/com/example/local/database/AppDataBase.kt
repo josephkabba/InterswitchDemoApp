@@ -6,10 +6,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.local.CommonLocal
-import com.example.local.models.FeeLocalDataModel
+import com.example.local.models.FeeLocalModel
 
 @Database(
-    entities = [FeeLocalDataModel::class],
+    entities = [FeeLocalModel::class],
     version = CommonLocal.database_version,
     exportSchema = false
 )
