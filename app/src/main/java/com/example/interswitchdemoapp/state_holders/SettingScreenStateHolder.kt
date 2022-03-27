@@ -35,16 +35,16 @@ class SettingScreenStateHolder(
 
                 Status.LOADING -> {
                     disposable?.dispose()
-                    message = "Checking cache size"
+                    message = "Checking local cache size"
                 }
 
                 Status.SUCCESS -> {
                     disposable?.dispose()
                     message = if (response.data == 0) {
-                        "Cache is clear"
+                        "Local cache is empty"
                     } else {
                         viewModel.deleteCache()
-                        "Cache data has been deleted"
+                        "Local cache data has been deleted"
                     }
                 }
             }

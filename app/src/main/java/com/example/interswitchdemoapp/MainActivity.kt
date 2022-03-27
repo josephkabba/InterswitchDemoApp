@@ -78,16 +78,10 @@ class MainActivity : ComponentActivity() {
 
                         LaunchedEffect(scaffoldState.snackbarHostState) {
                             coroutineScope.launch {
-                                if (isConnected) {
+                                if (!isConnected) {
                                     scaffoldState.snackbarHostState.showSnackbar(
-                                        "Connected",
-                                        duration = SnackbarDuration.Long
-                                    )
-
-                                } else {
-                                    scaffoldState.snackbarHostState.showSnackbar(
-                                        "No Connection",
-                                        duration = SnackbarDuration.Long
+                                        "No Internet Connection",
+                                        duration = SnackbarDuration.Short
                                     )
                                 }
                             }
