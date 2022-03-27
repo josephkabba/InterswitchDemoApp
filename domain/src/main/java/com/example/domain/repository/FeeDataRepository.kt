@@ -10,4 +10,6 @@ interface FeeDataRepository {
 
     fun deleteCache(): Completable
 
+    fun getCacheItemCount(): Observable<Int>
+
 }

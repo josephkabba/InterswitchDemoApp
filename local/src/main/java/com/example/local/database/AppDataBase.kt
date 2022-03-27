@@ -5,19 +5,17 @@ import androidx.annotation.NonNull
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import com.example.local.CommonLocal
-import com.example.local.converters.DataConverters
+import com.example.local.models.FeeGroupLocalModel
 import com.example.local.models.FeeLocalModel
+import com.example.local.models.PayConfigurationLocalModel
 
 @Database(
-    entities = [FeeLocalModel::class],
+    entities = [FeeLocalModel::class, PayConfigurationLocalModel::class, FeeGroupLocalModel::class],
     version = CommonLocal.database_version,
     exportSchema = false
 )
-@TypeConverters(DataConverters::class)
 abstract class AppDataBase : RoomDatabase() {
-
 
     abstract fun feeDao(): FeeDao
 
@@ -28,21 +26,17 @@ abstract class AppDataBase : RoomDatabase() {
         private var INSTANCE: AppDataBase? = null
 
         fun getInstance(@NonNull context: Context): AppDataBase {
-
             synchronized(this) {
-                var instance = INSTANCE
-
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(
+                        context,
                         AppDataBase::class.java,
                         DATABASE_NAME,
-                    ).fallbackToDestructiveMigration().build()
-
-                    INSTANCE = instance
+                    ).build()
                 }
-                return instance
             }
+
+            return INSTANCE!!
         }
     }
 }

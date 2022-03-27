@@ -10,7 +10,6 @@ data class FeeDomainModel(
     val isActive: Boolean,
     val isInclusiveInAmount: Boolean,
     val issueDate: String,
-    val itemFeeMapSettings: List<Any>,
     val name: String,
     val overrideBillerFee: Boolean,
     val payConfiguration: List<PayConfigurationDomainModel>,

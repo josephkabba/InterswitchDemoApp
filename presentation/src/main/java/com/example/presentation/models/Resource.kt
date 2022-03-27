@@ -1,4 +1,4 @@
-package com.example.presentation
+package com.example.presentation.models
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?, val errors: Any? = null) {
 

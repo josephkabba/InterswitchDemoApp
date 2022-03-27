@@ -24,12 +24,6 @@ abstract class DataModule {
 
     @Singleton
     @Binds
-    abstract fun bindsRemoteDataSource(
-        remoteDataSource: RemoteDataSourceImpl
-    ): RemoteDataSource
-
-    @Singleton
-    @Binds
     abstract fun bindsFeeDataSource(
         feeDataSource: FeeDataRepositoryImpl
     ): FeeDataRepository

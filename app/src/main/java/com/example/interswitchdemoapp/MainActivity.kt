@@ -130,7 +130,7 @@ class MainActivity : ComponentActivity() {
                     }
                     ) { innerPadding ->
 
-                        ConnectivityStatus(scaffoldState = scaffoldState)
+                        //ConnectivityStatus(scaffoldState = scaffoldState)
 
                         AnimatedNavHost(
                             navController,

@@ -1,7 +1,6 @@
 package com.example.data
 
 import com.example.data.mappers.FeeDataMapper
-import com.example.data.models.isEmpty
 import com.example.data.models.toFeeDataModel
 import com.example.data.repository.LocalDataSource
 import com.example.data.repository.RemoteDataSource
@@ -17,18 +16,31 @@ class FeeDataRepositoryImpl @Inject constructor(
     private val feeDataMapper: FeeDataMapper
 ) : FeeDataRepository {
     override fun getFeeData(id: Int): Observable<FeeDomainModel> {
-        val dataObservable = localDataSource.getLocalFeeItem(id).map {
-            feeDataMapper.toDomain(it)
-        }
+        val dataObservable = localDataSource.getLocalFeeItem(id)
+            .map {
+                feeDataMapper.toDomain(it)
+            }
 
         return remoteDataSource.getFeeItem(id).map {
+            localDataSource.insertItemFee(it.toFeeDataModel())
+            localDataSource.insertItemFeeGroups(
+                it.toFeeDataModel().id,
+                it.toFeeDataModel().feeGroups
+            )
+            localDataSource.insertItemPayConfigs(
+                it.toFeeDataModel().id,
+                it.toFeeDataModel().payConfiguration
+            )
             feeDataMapper.toDomain(it.toFeeDataModel())
-        }.onErrorResumeNext(Observable.empty())
-            .concatWith(dataObservable)
+        }.concatWith(dataObservable)
 
     }
 
     override fun deleteCache(): Completable {
         return localDataSource.deleteAllFeeData()
+    }
+
+    override fun getCacheItemCount(): Observable<Int> {
+        return localDataSource.getCacheItemCount()
     }
 }

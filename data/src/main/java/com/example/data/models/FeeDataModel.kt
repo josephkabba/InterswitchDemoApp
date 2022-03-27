@@ -10,7 +10,6 @@ data class FeeDataModel(
     val isActive: Boolean,
     val isInclusiveInAmount: Boolean,
     val issueDate: String,
-    val itemFeeMapSettings: List<Any>,
     val name: String,
     val overrideBillerFee: Boolean,
     val payConfiguration: List<PayConfigurationDataModel>,
@@ -21,7 +20,3 @@ data class FeeDataModel(
     val withholdingTax: Double,
     val withholdingTaxAccount: String
 )
-
-fun FeeDataModel.isEmpty(): Boolean {
-    return this.name == ""
-}
