@@ -3,13 +3,14 @@
 
 This is the Interswitch Demo Application
 
-The project is divided into modules namely:- 
-    1. app
-    2. domain
-    3. presentation
-    4. local
-    5. remote
-    6. data
+The project is divided into modules namely:
+
+1. app
+2. domain
+3. presentation
+4. local
+5. remote
+6. data
 
 Instructions on how to run the application
 
