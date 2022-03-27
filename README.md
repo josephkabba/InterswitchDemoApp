@@ -21,15 +21,15 @@ Instructions on how to run the application
 5. Enter the ID you want and click on search. The application will display the data. If it exists on the api
 6. Using the bottom navigation menu displayed you can navigate to the settings screen.
 7. There press the large circular button and the app will clear the local cache.
+8. I have also compiled the application. If you desire a quick installation. (check in the apk directory for the apk file)
 
 Thats all to the application.
 
 Stake holders
 
-Kabba Joseph Timothy 
-(Test exam project)
+Kabba Joseph Timothy.
+InterSwitch.
 
-InterSwitch
 (Test exam project)
 
 NB: Please don't clone this repository if you have not been authorized by the stake holders. If you do do the stakeholders will take legal action.
