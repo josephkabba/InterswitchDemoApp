@@ -170,7 +170,7 @@ class MainActivity : ComponentActivity() {
         return if (connected) ConnectionState.Available else ConnectionState.Unavailable
     }
 
-    fun Context.observeConnectivityAsFlow() = callbackFlow {
+    private fun Context.observeConnectivityAsFlow() = callbackFlow {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val callback = NetworkCallback { connectionState -> trySend(connectionState) }
