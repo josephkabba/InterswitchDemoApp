@@ -43,7 +43,7 @@ class SettingScreenStateHolder(
                     message = if (response.data == 0) {
                         "Local cache is empty"
                     } else {
-                        viewModel.deleteCache()
+                        //viewModel.deleteCache()
                         "Local cache data has been deleted"
                     }
                 }

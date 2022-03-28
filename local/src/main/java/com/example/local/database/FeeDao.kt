@@ -14,21 +14,21 @@ import io.reactivex.Single
 interface FeeDao {
 
     @Insert()
-    fun insertItemFee(dataItem: FeeLocalModel): Completable
+    fun insertItemFee(dataItem: FeeLocalModel)
 
     @Insert()
-    fun insertItemFeeGroups(dataItem: List<FeeGroupLocalModel>): Completable
+    fun insertItemFeeGroups(dataItem: List<FeeGroupLocalModel>)
 
     @Insert()
-    fun insertItemPayConfigs(dataItem: List<PayConfigurationLocalModel>): Completable
+    fun insertItemPayConfigs(dataItem: List<PayConfigurationLocalModel>)
 
     @Transaction
     @Query("SELECT * FROM fee_item_data WHERE id=:id LIMIT 1")
-    fun getLocalFeeItem(id: Int): Observable<FeeLocalRelation>
+    fun getLocalFeeItem(id: Int): FeeLocalRelation?
 
     @Query("SELECT COUNT(*) FROM fee_item_data")
     fun getCacheItemCount(): Observable<Int>
 
     @Query("DELETE FROM fee_item_data")
-    fun  deleteAllFeeData(): Completable
+    fun  deleteAllFeeData()
 }

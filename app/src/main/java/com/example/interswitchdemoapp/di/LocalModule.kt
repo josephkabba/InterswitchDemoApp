@@ -8,6 +8,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 
@@ -24,5 +26,11 @@ object LocalModule {
     @Provides
     fun provideFeeDao(database: AppDataBase): FeeDao {
         return database.feeDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesExecutorService(): ExecutorService{
+        return  Executors.newFixedThreadPool(10)
     }
 }

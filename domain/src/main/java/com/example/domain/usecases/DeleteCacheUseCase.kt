@@ -10,12 +10,10 @@ import javax.inject.Inject
 
 class DeleteCacheUseCase @Inject constructor(
     private val feeDataRepository: FeeDataRepository,
-    @Background backgroundScheduler: Scheduler,
-    @Foreground foregroundScheduler: Scheduler
-) : CompletableUseCase(backgroundScheduler, foregroundScheduler) {
+) : CompletableUseCase() {
 
-    override fun generateCompletable(): Completable {
-        return feeDataRepository.deleteCache()
+    override fun generateCompletable() {
+        feeDataRepository.deleteCache()
     }
 
 }

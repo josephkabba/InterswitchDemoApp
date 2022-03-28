@@ -4,15 +4,11 @@ import io.reactivex.Completable
 import io.reactivex.Scheduler
 
 abstract class CompletableUseCase constructor(
-    private val backgroundScheduler: Scheduler,
-    private val foregroundScheduler: Scheduler
 ) {
-    protected abstract fun generateCompletable(): Completable
+    protected abstract fun generateCompletable()
 
-    fun buildUseCase(): Completable {
+    fun buildUseCase() {
         return generateCompletable()
-            .subscribeOn(backgroundScheduler)
-            .observeOn(foregroundScheduler)
     }
 
 }

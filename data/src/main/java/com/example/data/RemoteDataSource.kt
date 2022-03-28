@@ -1,4 +1,4 @@
-package com.example.data.repository
+package com.example.data
 
 import com.example.data.models.GetFeeDataModel
 import io.reactivex.Observable

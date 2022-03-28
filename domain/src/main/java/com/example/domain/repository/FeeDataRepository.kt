@@ -8,7 +8,7 @@ interface FeeDataRepository {
 
     fun getFeeData(id: Int): Observable<FeeDomainModel>
 
-    fun deleteCache(): Completable
+    fun deleteCache()
 
     fun getCacheItemCount(): Observable<Int>
 

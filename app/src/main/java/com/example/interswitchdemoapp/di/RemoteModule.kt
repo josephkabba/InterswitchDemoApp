@@ -1,6 +1,6 @@
 package com.example.interswitchdemoapp.di
 
-import com.example.data.repository.RemoteDataSource
+import com.example.data.RemoteDataSource
 import com.example.remote.RemoteDataSourceImpl
 import com.example.remote.api.RemoteService
 import dagger.Binds
